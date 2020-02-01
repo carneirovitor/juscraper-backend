@@ -1,6 +1,6 @@
     //Vitor Carneiro
     //Scrapper jusbrasil
-   const puppeteer = require('puppeteer');
+    const puppeteer = require('puppeteer-extra')
 
     var url;
 
@@ -77,7 +77,7 @@
             lsTimeline = await page.evaluate(extractTimeline); ///wait the extraction of data
             previousHeight = await page.evaluate('document.body.scrollHeight'); //update the height of scroll
             await page.evaluate('window.scrollTo(0, document.body.scrollHeight)'); //set the target to scroll
-            await page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`, {timeout:1000}); //waiting the height of actual scroll become higher of the previous
+            await page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`, {timeout:5000}); //waiting the height of actual scroll become higher of the previous
             await page.waitFor(scrollDelay); //wait for delay of scroll - for page update reason
           }
         } catch(e) {console.log(e)}
@@ -105,22 +105,20 @@
 
       //(async () => {
    module.exports.callScraper = async (lsnum) =>{
-      try{   
-      //set up the automated browser and page
-        const browser = await puppeteer.launch({
-          args: ['--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--single-process'],
-        });
+    const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+    puppeteer.use(StealthPlugin())
+ 
+        const browser = await puppeteer.launch({headless: true });
+        console.log("teste2");
          //const lsnum=lawsuit(process.argv[2]); ///receive the init parameter
-        const page = await browser.newPage(); //
-        page.setViewport({ width: 1280, height: 926 });
-        
-          await page.goto('https://www.jusbrasil.com.br/consulta-processual/'); //
+          const page = await browser.newPage(); //
+          page.setViewport({ width: 1280, height: 926 });
+          await page.goto('https://www.jusbrasil.com.br/consulta-processual/');
+          console.log("teste3");
+          await page.screenshot({path: 'buddy-screenshot.png'});
           await page.waitFor('input[class="form-control form-control--lg"]');
           await page.setDefaultNavigationTimeout(0); 
-      
+          
           // await page.type('input[class="form-control form-control--lg', 'lsnumber');
       
           await page.focus('input[class="form-control form-control--lg"]')
@@ -135,7 +133,7 @@
 
           // Close the automated browser.*//
           await browser.close();
-        }catch (e) {}
-        
+
+       
         return items;
       }
