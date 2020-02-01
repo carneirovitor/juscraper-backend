@@ -8,7 +8,7 @@ module.exports = async (app) => {
     //let lawsuits = await Lawsuit.find();
     //return res.status(200).send(lawsuits);
     const lawsuit = await LawsuitScraper.callScraper(req.query.lawsuitNumber)
-    return res.json(lawsuit);
+    return res.send(200).json(lawsuit);
   });
 
 
