@@ -20,7 +20,7 @@
       var sbElems =[];
       var sideBarData = [];
       var elements = document.querySelectorAll('#app-root > div > div > div > div.LawsuitRoot-aside.col-md-4 > div > div > div');
-      for (var element of elements){
+      /*for (var element of elements){
         var lsOrigin = element.children[1].children[0].children[1].innerText; // Select the number of lawsuit.
         var lsTramdate = element.children[1].children[1].children[1].innerText; // Select the number of lawsuit.
         var lsNature = element.children[1].children[2].children[1].innerText; // Select the number of lawsuit.
@@ -28,7 +28,7 @@
         var lsSubject = element.children[1].children[4].children[1].innerText; // Select the number of lawsuit.
         var lsJudge = element.children[1].children[5].children[1].innerText; // Select the number of lawsuit.
         sbDetails.push({lsOrigin,lsTramdate, lsNature, lsArea, lsSubject, lsJudge});
-      }
+      }*/
 
       for(var parts of elements){
         var lsPolename = parts.children[2].innerText; // Select the number of lawsuit.
