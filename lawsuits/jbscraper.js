@@ -77,7 +77,7 @@
             lsTimeline = await page.evaluate(extractTimeline); ///wait the extraction of data
             previousHeight = await page.evaluate('document.body.scrollHeight'); //update the height of scroll
             await page.evaluate('window.scrollTo(0, document.body.scrollHeight)'); //set the target to scroll
-            await page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`, {timeout:5000}); //waiting the height of actual scroll become higher of the previous
+            await page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`, {timeout:1000}); //waiting the height of actual scroll become higher of the previous
             await page.waitFor(scrollDelay); //wait for delay of scroll - for page update reason
           }
         } catch(e) {console.log(e)}
