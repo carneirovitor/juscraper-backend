@@ -1,5 +1,4 @@
 // /routes/productRoutes.js
-const Lawsuit = mongoose.model('lawsuits');
 const LawsuitScraper = require('../lawsuits/jbscraper')
 const path = require('path');
 
