@@ -108,7 +108,10 @@
       try{   
       //set up the automated browser and page
         const browser = await puppeteer.launch({
-          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+          args: ['--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--single-process'],
         });
          //const lsnum=lawsuit(process.argv[2]); ///receive the init parameter
         const page = await browser.newPage(); //
