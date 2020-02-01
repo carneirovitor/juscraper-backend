@@ -108,7 +108,6 @@
       try{   
       //set up the automated browser and page
         const browser = await puppeteer.launch({
-          headless: true,
           args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
          //const lsnum=lawsuit(process.argv[2]); ///receive the init parameter
