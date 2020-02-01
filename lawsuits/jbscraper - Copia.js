@@ -108,7 +108,7 @@
     const StealthPlugin = require('puppeteer-extra-plugin-stealth')
     puppeteer.use(StealthPlugin())
  
-        const browser = await puppeteer.launch({headless: true,args:['--no-sandbox', '--disable-setuid-sandbox']});
+        const browser = await puppeteer.launch({headless: true });
         console.log("teste2");
          //const lsnum=lawsuit(process.argv[2]); ///receive the init parameter
           const page = await browser.newPage(); //
