@@ -1,25 +1,4 @@
-/* var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/jbscraper');
-
-var lawsuitSchema = new mongoose.Schema({
-    lsnumber: String,
-    lsresume: String
-}, { collection: 'lawsuits' }
-);
-
-router.get('/lawsuits', function (req, res, next) {
-    var db = require('../lawsuits/db');
-    var Lawsuit = db.Mongoose.model('lawsuits', db.LawsuitSchema, 'lawsuits');
-    Lawsuit.find({}).lean().exec(function(e,docs){
-       res.json(docs);
-       res.end();
-    });
-});
-
-module.exports = { Mongoose: mongoose, LawsuitSchema: lawsuitSchema } */
-
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 //IMPORT_MODELS
@@ -27,8 +6,6 @@ require('./models/Lawsuits');
 
 const app = express();
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/sigjur`);
 
 app.use(bodyParser.json());
 
